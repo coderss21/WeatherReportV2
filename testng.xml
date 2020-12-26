@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite"><test verbose="2" preserve-order="true" name="D:/WeatherReport/src">
-    <classes><class name="com.assignment.uiAutomation.WeatherNDTVUI">
-        <methods><include name="checkWeather"/>
-        </methods>
-    </class>
+<suite name="Weather Forecast">
+    <parameter name="cityName" value="Ahmedabad"></parameter>
+
+    <test verbose="2" preserve-order="true" name="Weather from NDTV">
+        <parameter name="URL" value="https://social.ndtv.com/static/Weather/report/?pfrom=home-topsubnavigation">
+        </parameter>
+    <classes>
+        <class name="com.assignment.uiAutomation.WeatherNDTVUI"/>
+
     </classes>
 </test>
 </suite>

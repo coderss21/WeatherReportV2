@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class CompareTemperature {
 
-    @Test(dependsOnGroups = "WeatherCollect")
+    @Test
     public void compareTempInDegree(){
         WeatherNDTVUI wnu = new WeatherNDTVUI();
         Double tempFromUI=  Double.parseDouble(wnu.getTempInDegree());

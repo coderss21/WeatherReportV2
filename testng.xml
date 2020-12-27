@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Weather Forecast">
-    <parameter name="cityName" value="Ahmedabad"></parameter>
+    <parameter name="cityName" value="Ahmedabad"/>
+    <parameter name="countryCode" value="IN"/>
 
     <test verbose="2" preserve-order="true" name="Weather from NDTV">
-        <parameter name="URL" value="https://social.ndtv.com/static/Weather/report/?pfrom=home-topsubnavigation">
-        </parameter>
+
+        <parameter name="URL" value="https://social.ndtv.com/static/Weather/report/?pfrom=home-topsubnavigation"/>
+        <parameter name="URL1" value="http://api.openweathermap.org/data/2.5/weather"/>
+        <parameter name="units" value="metric"/>
     <classes>
         <class name="com.assignment.uiAutomation.WeatherNDTVUI"/>
-
+        <class name="com.assignment.apiAutomation.OpenWeatherMapAPIValidation">
+        </class>
     </classes>
 </test>
 </suite>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Weather Forecast">
-    <parameter name="cityName" value="Ahmedabad"/>
+    <parameter name="cityName" value="Ajmer"/>
     <parameter name="countryCode" value="IN"/>
 
     <test verbose="2" preserve-order="true" name="Weather from NDTV">
@@ -13,6 +13,7 @@
         <class name="com.assignment.uiAutomation.WeatherNDTVUI"/>
         <class name="com.assignment.apiAutomation.OpenWeatherMapAPIValidation">
         </class>
+        <class name="com.assignment.comparing.CompareTemperature"/>
     </classes>
 </test>
 </suite>

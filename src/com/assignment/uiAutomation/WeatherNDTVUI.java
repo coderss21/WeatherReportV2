@@ -7,18 +7,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class WeatherNDTVUI {
-
+      public String pathToDriver="C:\\work\\npmwork\\node_modules\\chromedriver\\lib\\chromedriver\\chromedriver.exe";
+      private static String tempInDegree;
+      
     @Parameters({"URL","cityName"})
     @Test
     public void checkWeather(String url,String cityName) {
-        System.setProperty("webdriver.chrome.driver", "C:\\work\\npmwork\\node_modules\\chromedriver\\lib\\chromedriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", pathToDriver);
         WebDriver driver = new ChromeDriver();
         driver.get(url);
         driver.manage().window().maximize();
@@ -44,20 +45,31 @@ public class WeatherNDTVUI {
         values[4] = nvr.getTempInFahrenheit().getText();
 
         //Validate that selected city is giving the weather details or not
+
         for (int i = 1; i < values.length; i++) {
             String[] splitedValue = values[i].split(":");
-            String formattedValue = splitedValue[1];
+            String formattedValue = splitedValue[1].trim();
+            if(i==3){
+                tempInDegree=formattedValue;
+                setTempInDegree(tempInDegree);
+                System.out.println(tempInDegree);
+            }
             boolean checkCondition = false;
-
-            //System.out.println(formattedValue);
             if (formattedValue.isEmpty() == false) {
                 checkCondition = true;
                 Assert.assertTrue(checkCondition);
             }
             checkCondition = false;
         }
-
         driver.close();
     }
+
+    public void setTempInDegree(String tempInDegree){
+        this.tempInDegree=tempInDegree;
+    }
+      public String getTempInDegree(){
+        return tempInDegree;
+      }
+
 
 }
